@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "131464233098",
+    "firebase_url": "https://manage-money-643ab.firebaseio.com",
+    "project_id": "manage-money-643ab",
+    "storage_bucket": "manage-money-643ab.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:131464233098:android:e0c2efe28cc112d9d06d73",
+        "android_client_info": {
+          "package_name": "com.austingodwin.manage_money"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "131464233098-q9t27sgraj1a4ia62dmqiblrlnh7m4f0.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAb-1H29T-9k8cVfDwVi2MYp-e9lFSHH2M"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "131464233098-q9t27sgraj1a4ia62dmqiblrlnh7m4f0.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
