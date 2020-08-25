@@ -1,34 +1,34 @@
 {
   "project_info": {
-    "project_number": "131464233098",
-    "firebase_url": "https://manage-money-643ab.firebaseio.com",
-    "project_id": "manage-money-643ab",
-    "storage_bucket": "manage-money-643ab.appspot.com"
+    "project_number": "170026901504",
+    "firebase_url": "https://manage-money-9ac40.firebaseio.com",
+    "project_id": "manage-money-9ac40",
+    "storage_bucket": "manage-money-9ac40.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:131464233098:android:e0c2efe28cc112d9d06d73",
+        "mobilesdk_app_id": "1:170026901504:android:8ebc6842d4178114a038e5",
         "android_client_info": {
           "package_name": "com.austingodwin.manage_money"
         }
       },
       "oauth_client": [
         {
-          "client_id": "131464233098-q9t27sgraj1a4ia62dmqiblrlnh7m4f0.apps.googleusercontent.com",
+          "client_id": "170026901504-bmem88fd4vuqc3vo9sufcqbeggvd2o0o.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyAb-1H29T-9k8cVfDwVi2MYp-e9lFSHH2M"
+          "current_key": "AIzaSyClje01dxmlJ2ZnveJ5HZ1FaK2fFQfFlmI"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "131464233098-q9t27sgraj1a4ia62dmqiblrlnh7m4f0.apps.googleusercontent.com",
+              "client_id": "170026901504-bmem88fd4vuqc3vo9sufcqbeggvd2o0o.apps.googleusercontent.com",
               "client_type": 3
             }
           ]

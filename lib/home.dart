@@ -1,17 +1,32 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:manage_money/models/master_model.dart';
+import 'package:manage_money/models/Category_model.dart';
+import 'package:manage_money/models/data.dart';
 import 'reusable_row.dart';
+import 'package:intl/intl.dart';
 import 'reusable_list_tile.dart';
-import 'add_income_screen.dart';
-import 'add_expense_screen.dart';
+import 'screens/add_income_screen.dart';
+import 'screens/add_expense_screen.dart';
 
 class Home extends StatefulWidget {
+  static final String id = 'home';
   @override
   _HomeState createState() => _HomeState();
 }
 
 class _HomeState extends State<Home> {
+  var now = DateTime.now().toString();
+//  var db = DatabaseHelper();
+  final _incomeAmountController = TextEditingController();
+  final _expenseAmountController = TextEditingController();
+
+  String valueText;
+
+  final List<Master> transactionList = <Master>[];
+  final List<CategoryModel> categoryList = <CategoryModel>[];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -128,7 +143,7 @@ class _HomeState extends State<Home> {
           ),
         ),
       ),
-      body: Container(),
+      body: Master(),
       bottomNavigationBar: Container(
         color: Colors.green,
         child: ReusableListTile(
@@ -149,11 +164,21 @@ class _HomeState extends State<Home> {
 
   //Show the income alert box
   void showIncomeAlert() {
+//    final data = Data(
+//      icon: Icon(Icons.attach_money),
+//      amount: 500,
+//      dateTime: DateFormat("dd/MM/yyyy").format(DateTime.now()).toString(),
+//    );
+//    _incomeAmountController.valueText = "00.0";
     var alert = AlertDialog(
       content: Row(
         children: <Widget>[
           Flexible(
             child: TextField(
+              onChanged: (value) {
+                valueText = value;
+              },
+              controller: _incomeAmountController,
               autofocus: true,
               keyboardType: TextInputType.number,
               decoration: InputDecoration(
@@ -167,7 +192,13 @@ class _HomeState extends State<Home> {
       ),
       actions: <Widget>[
         FlatButton(
-          onPressed: () {},
+          onPressed: () {
+            Navigator.pushNamed(context, Home.id,
+                arguments: ScreenArguments(valueText: valueText));
+            _incomeAmountController.clear();
+//            double amount = double.parse(_incomeAmountController.text);
+//            String transactionType = "income";
+          },
           child: Text(
             'Add',
             style: TextStyle(color: Colors.green),
@@ -176,12 +207,7 @@ class _HomeState extends State<Home> {
         FlatButton(
           onPressed: () {
             setState(() {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => AddIncome(),
-                ),
-              );
+              Navigator.pushNamed(context, AddIncome.id);
             });
           },
           child: Text(
@@ -232,12 +258,7 @@ class _HomeState extends State<Home> {
         FlatButton(
           onPressed: () {
             setState(() {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => AddExpense(),
-                ),
-              );
+              Navigator.pushNamed(context, AddExpense.id);
             });
           },
           child: Text(
@@ -258,6 +279,11 @@ class _HomeState extends State<Home> {
     );
     showDialog(context: context, builder: (_) => alert);
   }
+}
+
+class ScreenArguments {
+  ScreenArguments({this.valueText});
+  final String valueText;
 }
 
 class ChoiceOfSelection {

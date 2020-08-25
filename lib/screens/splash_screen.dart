@@ -3,6 +3,8 @@ import 'dart:async';
 import 'login_screen.dart';
 
 class SplashScreen extends StatefulWidget {
+  static final String id = 'splash_screen';
+
   @override
   _SplashScreenState createState() => _SplashScreenState();
 }
@@ -14,12 +16,7 @@ class _SplashScreenState extends State<SplashScreen> {
     super.initState();
     Timer(
       Duration(seconds: 5),
-      () => Navigator.push(
-        context,
-        MaterialPageRoute(
-          builder: (context) => LoginScreen(),
-        ),
-      ),
+      () => Navigator.pushNamed(context, LoginScreen.id),
     );
   }
 

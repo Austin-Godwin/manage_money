@@ -1,65 +1,58 @@
 import 'package:flutter/material.dart';
-import 'signup_screen.dart';
-import 'home.dart';
+import 'package:manage_money/home.dart';
+import 'package:manage_money/screens/signup_screen.dart';
 
 class LoginScreen extends StatefulWidget {
+  static final String id = 'login_screen';
+
   @override
   _LoginScreenState createState() => _LoginScreenState();
 }
 
 class _LoginScreenState extends State<LoginScreen> {
   final _formkey = GlobalKey<FormState>();
+  String _email, _password;
+
+  _submit() {
+    if (_formkey.currentState.validate()) {
+      _formkey.currentState.save();
+      print(_email);
+      print(_password);
+      Navigator.pushNamed(context, Home.id);
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-//      appBar: AppBar(
-//        title: Text('LOGIN PAGE'),
-//        backgroundColor: Colors.green,
-//        elevation: 0.0,
-//        iconTheme: IconThemeData(
-//          color: Color(0xFF18D191),
-//        ),
-//      ),
-      body: Container(
-        padding: EdgeInsets.all(20.0),
-        child: Form(
-          key: _formkey,
+      body: SafeArea(
+        child: Center(
           child: Column(
-            mainAxisAlignment: MainAxisAlignment.start,
-//          crossAxisAlignment: CrossAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
-              SizedBox(
-                height: 100.0,
-              ),
               Text(
-                'Your Login Details',
+                'HarrlietMoney',
                 style: TextStyle(
+                  fontFamily: 'Billabong',
                   color: Colors.green[800],
-                  fontSize: 20.0,
+                  fontSize: 50.0,
                   fontWeight: FontWeight.bold,
                 ),
               ),
-              SizedBox(
-                height: 8.0,
-              ),
-              Expanded(
-                flex: 2,
+              Form(
+                key: _formkey,
                 child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
+                  mainAxisSize: MainAxisSize.min,
                   children: <Widget>[
+                    SizedBox(
+                      height: 20.0,
+                    ),
                     Padding(
                       padding: const EdgeInsets.symmetric(
                         horizontal: 20.0,
                         vertical: 0.0,
                       ),
                       child: TextFormField(
-                        validator: (value) {
-                          if (value.isEmpty) {
-                            return 'Please enter your email address';
-                          }
-                          return null;
-                        },
                         keyboardType: TextInputType.emailAddress,
                         decoration: InputDecoration(
                           border: OutlineInputBorder(
@@ -67,10 +60,19 @@ class _LoginScreenState extends State<LoginScreen> {
                           ),
                           labelText: 'Input Your Email',
                         ),
+                        validator: (input) {
+                          if (!input.contains('@')) {
+                            return 'Please enter a valid email';
+                          }
+                          return null;
+                        },
+                        onSaved: (input) {
+                          return _email = input;
+                        },
                       ),
                     ),
                     SizedBox(
-                      height: 30.0,
+                      height: 10.0,
                     ),
                     Padding(
                       padding: const EdgeInsets.symmetric(
@@ -85,10 +87,20 @@ class _LoginScreenState extends State<LoginScreen> {
                           ),
                           labelText: 'Input Your Password',
                         ),
+                        validator: (input) {
+                          if (input.length < 6) {
+                            return 'Must be at least 6 characters';
+                          }
+                          return null;
+                        },
+                        onSaved: (input) {
+                          return _password = input;
+                        },
+                        obscureText: true,
                       ),
                     ),
                     SizedBox(
-                      height: 15.0,
+                      height: 10.0,
                     ),
                     Padding(
                       padding: const EdgeInsets.only(left: 150.0),
@@ -104,52 +116,33 @@ class _LoginScreenState extends State<LoginScreen> {
                       ),
                     ),
                     SizedBox(
-                      height: 15.0,
+                      height: 10,
                     ),
                     RaisedButton(
+                      onPressed: _submit,
                       color: Colors.green,
+                      elevation: 0.0,
                       child: Text(
                         'LOGIN',
                         style: TextStyle(color: Colors.white),
                       ),
-                      onPressed: () {
-                        setState(() {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => Home(),
-                            ),
-                          );
-                        });
-                      },
                     ),
+                    SizedBox(
+                      height: 10,
+                    ),
+                    RaisedButton(
+                      onPressed: () =>
+                          Navigator.pushNamed(context, SignupScreen.id),
+                      color: Colors.green,
+                      elevation: 0.0,
+                      child: Text(
+                        'Don\'t have an account? SIGN UP',
+                        style: TextStyle(color: Colors.white),
+                      ),
+                    )
                   ],
                 ),
-              ),
-              Container(
-                color: Colors.green,
-                width: double.infinity,
-                height: 50.0,
-                child: FlatButton(
-                  onPressed: () {
-                    setState(() {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => SignupScreen(),
-                        ),
-                      );
-                    });
-                  },
-                  child: Text(
-                    'Don\'t have an account?',
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                ),
-              ),
+              )
             ],
           ),
         ),
