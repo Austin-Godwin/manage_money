@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:manage_money/home.dart';
-import 'package:manage_money/screens/add_expense_screen.dart';
-import 'package:manage_money/screens/add_income_screen.dart';
-import 'package:manage_money/screens/login_screen.dart';
-import 'package:manage_money/screens/signup_screen.dart';
-import 'package:manage_money/screens/splash_screen.dart';
+import 'package:manage_money/features/home/presentation/views/home_view.dart';
+import 'package:manage_money/features/home/presentation/views/add_expense_view.dart';
+import 'package:manage_money/features/home/presentation/views/add_income_view.dart';
+import 'package:manage_money/features/home/presentation/views/login_view.dart';
+import 'package:manage_money/features/home/presentation/views/signup_view.dart';
+import 'package:manage_money/features/home/presentation/views/splash_view.dart';
 
 void main() => runApp(MyApp());
 
