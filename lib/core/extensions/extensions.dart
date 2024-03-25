@@ -1,0 +1,1 @@
+export 'package:manage_money/core/extensions/app_color_extension.dart';
